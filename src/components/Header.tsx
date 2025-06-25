@@ -82,13 +82,6 @@ export function Header() {
                 >
                   projects
                 </Link>
-                <Link 
-                  href="/api" 
-                  className="text-sm text-gray-500 hover:text-gray-900"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  api
-                </Link>
               </nav>
               <div className="hidden md:block md:col-span-1" />
             </div>
