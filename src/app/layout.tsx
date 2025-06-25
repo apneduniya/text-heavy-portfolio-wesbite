@@ -3,6 +3,7 @@ import { Header } from '@/components/Header'
 import { PostHogProvider } from '@/components/PostHogProvider'
 import './globals.css'
 import { Metadata, Viewport } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import basicInfo from '@/data/basic.json'
 
 const inter = Inter({ 
@@ -64,6 +65,7 @@ export default function RootLayout({
             {children}
           </main>
         </PostHogProvider>
+        <Analytics />
       </body>
     </html>
   )
