@@ -47,21 +47,38 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 }
 
 export async function getAllPosts(): Promise<Post[]> {
-  const slugs = fs.readdirSync(postsDirectory)
-    .filter(file => file.endsWith('.mdx'))
-    .map(file => file.replace(/\.mdx$/, ''))
-  
-  const postsPromises = slugs.map(slug => getPostBySlug(slug))
-  const postsWithNull = await Promise.all(postsPromises)
-  
-  // Filter out null values and sort by date (newest first)
-  const posts = postsWithNull
-    .filter((post): post is Post => post !== null)
-    .sort((post1, post2) => {
-      const date1 = parseDateString(post1.date)
-      const date2 = parseDateString(post2.date)
-      return date2.getTime() - date1.getTime()
-    })
-  
-  return posts
-} 
+  try {
+    // Check if directory exists and is readable
+    if (!fs.existsSync(postsDirectory)) {
+      return []
+    }
+
+    const files = fs.readdirSync(postsDirectory)
+
+    // If directory is empty, return empty array
+    if (files.length === 0) {
+      return []
+    }
+
+    const slugs = files
+      .filter(file => file.endsWith('.mdx'))
+      .map(file => file.replace(/\.mdx$/, ''))
+
+    const postsPromises = slugs.map(slug => getPostBySlug(slug))
+    const postsWithNull = await Promise.all(postsPromises)
+
+    // Filter out null values and sort by date (newest first)
+    const posts = postsWithNull
+      .filter((post): post is Post => post !== null)
+      .sort((post1, post2) => {
+        const date1 = parseDateString(post1.date)
+        const date2 = parseDateString(post2.date)
+        return date2.getTime() - date1.getTime()
+      })
+
+    return posts
+  } catch {
+    // If there's any error reading the directory, return empty array
+    return []
+  }
+}
