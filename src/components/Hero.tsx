@@ -2,15 +2,16 @@
 
 import Image from 'next/image'
 import { LinkText } from './LinkText'
-import { Mail, Github, Instagram } from 'lucide-react'
+import { Mail, Github } from 'lucide-react'
 import { useState } from 'react'
+import basicInfo from '@/data/basic.json'
 
 export function Hero() {
   const [showCopied, setShowCopied] = useState(false)
 
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    navigator.clipboard.writeText('yb@yashbhardwaj.com')
+    navigator.clipboard.writeText(basicInfo.mail)
     setShowCopied(true)
     setTimeout(() => setShowCopied(false), 2000)
   }
@@ -19,7 +20,7 @@ export function Hero() {
     <div className="mx-auto w-full max-w-[1084px] px-4 py-8 md:grid md:grid-cols-12 md:gap-5 md:px-0 md:py-16">
       {/* One column gap at start - desktop only */}
       <div className="hidden md:block md:col-span-1" />
-      
+
       {/* Mobile layout */}
       <div className="flex flex-col md:hidden gap-8">
         {/* Two-column layout for intro section on mobile */}
@@ -27,24 +28,22 @@ export function Hero() {
           {/* Welcome paragraph - 75% width */}
           <div className="w-3/4">
             <p className="text-base text-gray-600">
-              Hello! I&apos;m Yash and you&apos;re currently exploring my tiny 
-              corner of the internet. I use this space to project my ideas 
-              and express my obsessions.
+              Yo! I&apos;m Adarsh and this is my world (apneduniya). I think some crazy ideas and build them. Sometimes when I get bored, I write about them.
             </p>
           </div>
-          
+
           {/* Image - 25% width */}
           <div className="w-1/4 aspect-square relative">
             <Image
               src="/ag-hero.jpg"
-              alt="Yash Bhardwaj"
+              alt={basicInfo.name}
               fill
               className="rounded-lg object-cover"
               priority
             />
           </div>
         </div>
-        
+
         {/* Rest of mobile content */}
         <div className="space-y-8">
           {/* Summary section */}
@@ -52,77 +51,50 @@ export function Hero() {
             <h2 className="text-sm font-medium uppercase text-gray-400">Summary</h2>
             <ul className="list-disc space-y-2 pl-4 text-gray-600 [&>li::marker]:text-gray-300">
               <li>
-                Currently I&apos;m moving rectangles at{' '}
+                Currently I&apos;m taking care of users at{' '}
                 <LinkText
                   variant="single-image-link"
-                  text="Solana"
-                  href="https://solana.com"
-                  images={{ src: "/logos/solana.png", alt: "Solana" }}
+                  text="Composio"
+                  href="https://composio.dev/"
+                  images={{ src: "/logos/composio.jpg", alt: "Composio" }}
                   withBorder
                 />
               </li>
               <li>
-                Previously I was designing for{' '}
+                Previously I was fixing the UI for{' '}
                 <LinkText
                   variant="single-image-link"
-                  text="Balaji"
-                  href="https://x.com/balajis"
-                  images={{ src: "/logos/balaji.png", alt: "Balaji" }}
+                  text="Xade Finance"
+                  href="https://x.com/xade_xyz"
+                  images={{ src: "/logos/xadefinance.jpg", alt: "Xade Finance" }}
                   withBorder
                 />
-                {' '}&{' '}
-                <LinkText
-                  variant="single-image-link"
-                  text="Network State"
-                  href="https://ns.com"
-                  images={{ src: "/logos/ns.png", alt: "Network State" }}
-                  withBorder
-                />
+                as an intern
               </li>
               <li>
-                I&apos;ve worked for 220 companies since 2016{' '}
+                I&apos;ve worked for 10+ companies since 2023
+              </li>
+              <li>
+                In my free time, I contribute back to the community by {' '}
                 <LinkText
                   variant="image-stack"
                   text=""
                   images={[
-                    { src: "/logos/gates.png", alt: "Gates Foundation" },
-                    { src: "/logos/userpilot.png", alt: "Userpilot" },
-                    { src: "/logos/asy.png", alt: "Asymmetric" },
-                    { src: "/logos/cointelegraph.png", alt: "CoinTelegraph" },
-                    { src: "/logos/synthesis.png", alt: "Synthesis" },
-                    { src: "/logos/alpaca.png", alt: "Alpaca" },
+                    { src: "/logos/h4b.jpg", alt: "Hack4Bengal" },
+                    { src: "/logos/superteamin.jpg", alt: "Superteam" },
+                    { src: "/logos/takshila.jpeg", alt: "Takshila" },
                   ]}
                 />
               </li>
-              <li>25 years old, based in Bombay</li>
-              <li>
-                I built the first meme page network in India to 16M followers{' '}
-                <LinkText
-                  variant="image-stack"
-                  text=""
-                  images={[
-                    { src: "/logos/im.png", alt: "Indian Memes" }
-                  ]}
-                />
-              </li>
-              <li>
-                I write a pretty smart newsletter called{' '}
-                <LinkText
-                  variant="single-image-link"
-                  text="Product Hacks"
-                  href="https://producthacks.io"
-                  images={{ src: "/logos/producthacks.png", alt: "Product Hacks" }}
-                  withBorder
-                />
-              </li>
+              <li>18 years old, based in Kolkata</li>
             </ul>
           </div>
 
           {/* Social and Music section */}
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4 w-full">
-              <a 
-                href="mailto:yb@yashbhardwaj.com" 
+              <a
+                href={`mailto:${basicInfo.mail}`}
                 onClick={handleEmailClick}
                 className="group relative text-gray-400 hover:text-gray-600"
               >
@@ -133,40 +105,32 @@ export function Hero() {
                   </div>
                 )}
               </a>
-              <a 
-                href="https://x.com/ybhrdwj" 
+              <a
+                href={basicInfo.x}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-600"
               >
-                <Image 
-                  src="/x.svg" 
-                  alt="X (Twitter)" 
-                  width={20} 
+                <Image
+                  src="/x.svg"
+                  alt="X (Twitter)"
+                  width={20}
                   height={20}
                   className="[&>path]:fill-gray-100 hover:[&>path]:fill-gray-600"
                 />
-              </a>
-              <a 
-                href="https://instagram.com/ybhrdwj" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-600"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://github.com/ybhrdwj" 
+              </a> 
+              <a
+                href={basicInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-600"
               >
                 <Github className="h-5 w-5" />
               </a>
-              
+
               {/* Divider */}
               <div className="h-4 w-px bg-gray-200" />
-              
+
               {/* Music section - inline with social icons */}
               <div className="group flex items-center gap-2 text-gray-600 flex-1 min-w-0">
                 <div className="flex items-center gap-2 whitespace-nowrap overflow-hidden">
@@ -184,10 +148,10 @@ export function Hero() {
                     <span className="inline-flex max-w-[80px] sm:max-w-none overflow-hidden">
                       <LinkText
                         variant="text-link"
-                        text="Dissolve"
-                        href="https://www.youtube.com/watch?v=xe2FPP4lX14"
+                        text={basicInfo.listening.songName}
+                        href={basicInfo.listening.link}
                       />
-                      <span className="truncate"> by Absafacto</span>
+                      <span className="truncate"> by {basicInfo.listening.artist}</span>
                     </span>
                   </span>
                 </div>
@@ -196,14 +160,14 @@ export function Hero() {
           </div>
         </div>
       </div>
-      
+
       {/* Desktop layout - Main content - 7 columns */}
       <div className="hidden md:block md:col-span-7 space-y-12">
         {/* Welcome paragraph */}
         <p className="text-base text-gray-600">
-          Hello! I&apos;m Yash and you&apos;re currently exploring my tiny <br />
-          corner of the internet. I use this space to project my ideas <br />
-          and express my obsessions.
+          Yo! I&apos;m Adarsh and this is my space (apneduniya). <br />
+          I think some crazy ideas and build them. Sometimes when I get bored,  <br />
+          I write some random stuffs.
         </p>
 
         {/* Summary section */}
@@ -211,77 +175,50 @@ export function Hero() {
           <h2 className="text-sm font-medium uppercase text-gray-400">Summary</h2>
           <ul className="list-disc space-y-2 pl-4 text-gray-600 [&>li::marker]:text-gray-300">
             <li>
-              Currently I&apos;m moving rectangles at{' '}
+              Currently I&apos;m taking care of users at{' '}
               <LinkText
                 variant="single-image-link"
-                text="Solana"
-                href="https://solana.com"
-                images={{ src: "/logos/solana.png", alt: "Solana" }}
+                text="Composio"
+                href="https://composio.dev/"
+                images={{ src: "/logos/composio.jpg", alt: "Composio" }}
                 withBorder
               />
             </li>
             <li>
-              Previously I was designing for{' '}
+              Previously I was fixing the UI for{' '}
               <LinkText
                 variant="single-image-link"
-                text="Balaji"
-                href="https://x.com/balajis"
-                images={{ src: "/logos/balaji.png", alt: "Balaji" }}
+                text="Xade Finance"
+                href="https://x.com/xade_xyz"
+                images={{ src: "/logos/xadefinance.jpg", alt: "Xade Finance" }}
                 withBorder
               />
-              {' '}&{' '}
-              <LinkText
-                variant="single-image-link"
-                text="Network State"
-                href="https://ns.com"
-                images={{ src: "/logos/ns.png", alt: "Network State" }}
-                withBorder
-              />
+              as an intern
             </li>
             <li>
-              I&apos;ve worked for 220 companies since 2016{' '}
+              I&apos;ve worked for 10+ companies since 2023
+            </li>
+            <li>
+              In my free time, I contribute back to the community by {' '}
               <LinkText
                 variant="image-stack"
                 text=""
                 images={[
-                  { src: "/logos/gates.png", alt: "Gates Foundation" },
-                  { src: "/logos/userpilot.png", alt: "Userpilot" },
-                  { src: "/logos/asy.png", alt: "Asymmetric" },
-                  { src: "/logos/cointelegraph.png", alt: "CoinTelegraph" },
-                  { src: "/logos/synthesis.png", alt: "Synthesis" },
-                  { src: "/logos/alpaca.png", alt: "Alpaca" },
+                  { src: "/logos/h4b.jpg", alt: "Hack4Bengal" },
+                  { src: "/logos/superteamin.jpg", alt: "Superteam" },
+                  { src: "/logos/takshila.jpeg", alt: "Takshila" },
                 ]}
               />
             </li>
-            <li>25 years old, based in Bombay</li>
-            <li>
-              I built the first meme page network in India to 16M followers{' '}
-              <LinkText
-                variant="image-stack"
-                text=""
-                images={[
-                  { src: "/logos/im.png", alt: "Indian Memes" }
-                ]}
-              />
-            </li>
-            <li>
-              I write a pretty smart newsletter called{' '}
-              <LinkText
-                variant="single-image-link"
-                text="Product Hacks"
-                href="https://producthacks.io"
-                images={{ src: "/logos/producthacks.png", alt: "Product Hacks" }}
-                withBorder
-              />
-            </li>
+            <li>18 years old, based in Kolkata</li>
           </ul>
         </div>
 
         {/* Social and Music section */}
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-4">
-            <a 
-              href="mailto:yb@yashbhardwaj.com" 
+            <a
+              href={`mailto:${basicInfo.mail}`}
               onClick={handleEmailClick}
               className="group relative text-gray-400 hover:text-gray-600"
             >
@@ -292,30 +229,22 @@ export function Hero() {
                 </div>
               )}
             </a>
-            <a 
-              href="https://x.com/ybhrdwj" 
+            <a
+              href={basicInfo.x}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-gray-600"
             >
-              <Image 
-                src="/x.svg" 
-                alt="X (Twitter)" 
-                width={20} 
+              <Image
+                src="/x.svg"
+                alt="X (Twitter)"
+                width={20}
                 height={20}
                 className="[&>path]:fill-gray-100 hover:[&>path]:fill-gray-600"
               />
             </a>
-            <a 
-              href="https://instagram.com/ybhrdwj" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-gray-600"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a 
-              href="https://github.com/ybhrdwj" 
+            <a
+              href={basicInfo.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-gray-600"
@@ -323,10 +252,10 @@ export function Hero() {
               <Github className="h-5 w-5" />
             </a>
           </div>
-          
+
           {/* Divider */}
           <div className="h-4 w-px bg-gray-200" />
-          
+
           {/* Music section */}
           <div className="group flex items-center gap-2 text-gray-600">
             <div className="flex items-center gap-2 whitespace-nowrap overflow-hidden">
@@ -343,8 +272,8 @@ export function Hero() {
                 ♪ Listening to{' '}
                 <LinkText
                   variant="text-link"
-                  text="Dissolve by Absafacto"
-                  href="https://www.youtube.com/watch?v=xe2FPP4lX14"
+                  text={`${basicInfo.listening.songName} by ${basicInfo.listening.artist}`}
+                  href={basicInfo.listening.link}
                 />
               </span>
             </div>
@@ -356,7 +285,7 @@ export function Hero() {
       <div className="hidden md:block md:col-span-3">
         <Image
           src="/ag-hero.jpg"
-          alt="Yash Bhardwaj"
+          alt={basicInfo.name}
           width={400}
           height={400}
           className="rounded-lg"

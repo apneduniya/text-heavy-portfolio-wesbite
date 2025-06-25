@@ -5,6 +5,8 @@ import { ChevronLeft } from 'lucide-react'
 import { getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/formatDate'
 import { Metadata } from 'next'
+import basicInfo from '@/data/basic.json'
+
 
 export async function generateMetadata({
   params,
@@ -15,7 +17,7 @@ export async function generateMetadata({
   
   if (!post) {
     return {
-      title: 'Post Not Found | Yash Bhardwaj',
+      title: `Post Not Found | ${basicInfo.name}`,
       description: 'The requested post could not be found.',
     }
   }
@@ -23,13 +25,13 @@ export async function generateMetadata({
   const ogUrl = `/api/og?slug=${params.slug}&title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(post.category)}&date=${encodeURIComponent(post.date)}`
 
   return {
-    title: `${post.title} | Yash Bhardwaj`,
+    title: `${post.title} | ${basicInfo.name}`,
     description: post.description || post.title,
     openGraph: {
       type: 'article',
       title: post.title,
       description: post.description || post.title,
-      url: `https://yashbhardwaj.com/writing/${params.slug}`,
+      url: `${basicInfo.website}/writing/${params.slug}`,
       images: [
         {
           url: ogUrl,
@@ -38,15 +40,15 @@ export async function generateMetadata({
           alt: post.title,
         }
       ],
-      siteName: 'Yash Bhardwaj',
+      siteName: basicInfo.name,
       publishedTime: post.date,
-      authors: ['Yash Bhardwaj'],
+      authors: [basicInfo.name],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description || post.title,
-      creator: '@ybhrdwj',
+      creator: `@${basicInfo.username}`,
       images: [
         {
           url: ogUrl,
@@ -105,17 +107,17 @@ export default async function Post({
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image
-                src="/logos/yb.jpg"
-                alt="Yash Bhardwaj"
+                src="/logos/ag.jpg"
+                alt={basicInfo.name}
                 width={24}
                 height={24}
                 className="rounded-full"
               />
-              <span className="text-sm text-gray-600">by Yash Bhardwaj</span>
+              <span className="text-sm text-gray-600">by {basicInfo.name}</span>
             </div>
             <a 
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                `Just finished reading — ${post.title} by @ybhrdwj\n\nhttps://yashbhardwaj.com/writing/${params.slug}`
+              href={`https://x.com/intent/tweet?text=${encodeURIComponent(
+                `Just finished reading — ${post.title} by @${basicInfo.username}\n\n${basicInfo.website}/writing/${params.slug}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"

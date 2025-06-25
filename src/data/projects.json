@@ -2,78 +2,52 @@
   "title": "PROJECTS",
   "projects": [
     {
-      "logo": "/logos/bulkgen.png",
-      "name": "BulkGen",
-      "url": "bulkgen.app",
-      "description": "Generate Figma Designs from Google Sheets"
+      "logo": "/logos/kula.png",
+      "name": "Kula [Building]",
+      "url": "github.com/apneduniya/kula",
+      "description": "Futarchy x AI based world simulator"
     },
     {
-      "logo": "/logos/pondylife.png",
-      "name": "Pondy Life",
-      "url": "pondy.life",
-      "description": "The best places to go in Pondicherry"
+      "logo": "/logos/avasara.svg",
+      "name": "Avasara",
+      "url": "github.com/apneduniya/avasara",
+      "description": "Matches real-time opportunities to your skills using AI"
+    },
+    {
+      "logo": "/logos/prismia.png",
+      "name": "Prismia",
+      "url": "github.com/apneduniya/prismia",
+      "description": "Digital Product Passports"
+    },
+    {
+      "logo": "/logos/vity.png",
+      "name": "Vity Toolkit",
+      "url": "vity-toolkit.gitbook.io/vity-toolkit/",
+      "description": "Makes your agent powerful in just 2 more lines of code"
     },
     {
       "logo": "/logos/checkplug.png",
-      "name": "CheckPlug",
-      "url": "checkplug.com",
-      "description": "Find which travel adapters you need before you leave"
+      "name": "LazyA",
+      "url": "github.com/apneduniya/lazya",
+      "description": "Controls apps like YouTube, Gmail, GitHub by prompting"
     },
     {
-      "logo": "/logos/darzi.png",
-      "name": "Darzi",
-      "url": "darzi.ai",
-      "description": "AI fashion assistant that's always in your pocket"
+      "logo": "/logos/vitydevice.webp",
+      "name": "Vity Device",
+      "url": "github.com/apneduniya/vity-device", 
+      "description": "Telegram bot for seamless cross-device automation and connectivity"
     },
     {
-      "logo": "/logos/slacklash.png",
-      "name": "Slacklash",
-      "url": "slacklash.com",
-      "description": "A fun game about leaking company secrets"
+      "logo": "/logos/varta.jpeg",
+      "name": "Varta",
+      "url": "github.com/apneduniya/varta",
+      "description": "Personalized news summaries from 14+ sources"
+    },
+    {
+      "logo": "/logos/meetagent.jpg",
+      "name": "Meet Agent",
+      "url": "github.com/apneduniya/discord-ai-agent",
+      "description": "Schedule meetings on Discord"
     }
-    ,
-    {
-      "logo": "/logos/dosalist.png",
-      "name": "DosaList",
-      "url": "dosalist.com", 
-      "description": "CoinMarketCap for Dosa places in BLR"
-    },
-    {
-      "logo": "/logos/whichsideis.png",
-      "name": "Which Side Is?",
-      "url": "whichsideis.com",
-      "description": "Find which side a monument will be on your flight"
-    },
-    {
-      "logo": "/logos/scnz.png", 
-      "name": "SCNZ",
-      "url": "scnz.in",
-      "description": "Curated Lists of things to do in your city"
-    },
-    {
-      "logo": "/logos/unrot.png",
-      "name": "Unrot",
-      "url": "unrot.app",
-      "description": "An phyiscal brick to block your social media"
-    },
-    {
-      "logo": "/logos/uxmarket.png",
-      "name": "UX Market",
-      "url": "ux.market",
-      "description": "A marketplace for the world's best UI components"
-    },
-    {
-      "logo": "/logos/thumbnailmarket.png",
-      "name": "Thumbnail Market",
-      "url": "thumbnail.market",
-      "description": "A marketplace to buy high CTR thumbnails"
-    },
-    {
-      "logo": "/logos/shitposting.png",
-      "name": "Shitposting.lol",
-      "url": "shitposting.lol",
-      "description": "Monthly subscription of shitposts for your business"
-    }
-
   ]
 } 

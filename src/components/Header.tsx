@@ -21,7 +21,7 @@ export function Header() {
           <div className="col-span-10 flex h-[42px] items-center justify-between px-4 md:px-0">
             {/* Left side: Name */}
             <Link href="/" className="text-sm text-gray-900">
-              Yash Bhardwaj
+              Adarsh Gupta
             </Link>
 
             {/* Right side: Navigation, Weather, and Menu */}
@@ -33,9 +33,6 @@ export function Header() {
                 </Link>
                 <Link href="/projects" className="text-sm text-gray-500 hover:text-gray-900">
                   projects
-                </Link>
-                <Link href="/api" className="text-sm text-gray-500 hover:text-gray-900">
-                  api
                 </Link>
               </nav>
 

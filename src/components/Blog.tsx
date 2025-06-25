@@ -9,21 +9,31 @@ export async function Blog() {
       <h2 className="text-sm font-medium uppercase text-gray-400">WRITING</h2>
       
       <div className="space-y-4">
-        {posts.slice(0, 8).map((post) => (
-          <div key={post.slug} className="group">
-            <Link 
-              href={`/writing/${post.slug}`}
-              className="grid grid-cols-[80px_1fr] items-baseline"
-            >
-              <span className="text-sm text-gray-400">{post.date}</span>
-              <div>
-                <span className="inline border-b border-gray-200 text-base text-gray-600 group-hover:text-gray-900">
-                  {post.title}
-                </span>
+        {
+          posts.length > 0 ? (
+            posts.slice(0, 8).map((post) => (
+              <div key={post.slug} className="group">
+                <Link 
+                  href={`/writing/${post.slug}`}
+                  className="grid grid-cols-[80px_1fr] items-baseline"
+                >
+                  <span className="text-sm text-gray-400">{post.date}</span>
+                  <div>
+                    <span className="inline border-b border-gray-200 text-base text-gray-600 group-hover:text-gray-900">
+                      {post.title}
+                    </span>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-        ))}
+            ))
+          ) : (
+            <div>
+              <span className="text-base text-gray-600">
+                I am too lazy to write :&apos;{'\u0029'}
+              </span>
+            </div>
+          )
+        }
       </div>
     </div>
   )

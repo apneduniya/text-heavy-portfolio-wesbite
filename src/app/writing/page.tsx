@@ -2,18 +2,20 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 import { getAllPosts } from '@/lib/mdx'
 import { Metadata } from 'next'
+import basicInfo from '@/data/basic.json'
+
 
 export const metadata: Metadata = {
-  title: 'Writing | Yash Bhardwaj',
+  title: `Writing | ${basicInfo.name}`,
   description: 'Thoughts on technology, business, and life',
   openGraph: {
-    title: 'Writing | Yash Bhardwaj',
+    title: `Writing | ${basicInfo.name}`,
     description: 'Thoughts on technology, business, and life',
     images: ['/api/og'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Writing | Yash Bhardwaj',
+    title: `Writing | ${basicInfo.name}`,
     description: 'Thoughts on technology, business, and life',
     images: ['/api/og'],
   },
@@ -41,26 +43,36 @@ export default async function WritingPage() {
           <h1 className="text-3xl font-semibold mb-12">Writing</h1>
           
           <div className="space-y-4">
-            {posts.map((post) => (
-              <div key={post.slug} className="group">
-                <div className="grid grid-cols-[80px_1fr] sm:grid-cols-[100px_1fr_auto] items-baseline gap-2">
-                  <span className="text-sm text-gray-400">{post.date}</span>
-                  <div className="min-w-0">
-                    <Link 
-                      href={`/writing/${post.slug}`}
-                      className="inline-block"
-                    >
-                      <span className="border-b border-gray-200 text-base text-gray-600 group-hover:text-gray-900 group-hover:border-gray-400">
-                        {post.title}
-                      </span>
-                    </Link>
+            {
+              posts.length < 0? (
+                posts.map((post) => (
+                  <div key={post.slug} className="group">
+                    <div className="grid grid-cols-[80px_1fr] sm:grid-cols-[100px_1fr_auto] items-baseline gap-2">
+                      <span className="text-sm text-gray-400">{post.date}</span>
+                      <div className="min-w-0">
+                        <Link 
+                          href={`/writing/${post.slug}`}
+                          className="inline-block"
+                        >
+                          <span className="border-b border-gray-200 text-base text-gray-600 group-hover:text-gray-900 group-hover:border-gray-400">
+                            {post.title}
+                          </span>
+                        </Link>
+                      </div>
+                      {post.category && (
+                        <span className="hidden sm:block text-sm text-gray-400 text-right">{post.category}</span>
+                      )}
+                    </div>
                   </div>
-                  {post.category && (
-                    <span className="hidden sm:block text-sm text-gray-400 text-right">{post.category}</span>
-                  )}
+                ))
+              ) : (
+                <div>
+                  <span className="text-base text-gray-600">
+                    I am too lazy to write :&apos;{'\u0029'}
+                  </span>
                 </div>
-              </div>
-            ))}
+              )
+            }
           </div>
         </div>
 

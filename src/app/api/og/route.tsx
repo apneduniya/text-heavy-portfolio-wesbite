@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
+import basicInfo from '@/data/basic.json'
 
 export const runtime = 'edge'
 
@@ -30,7 +31,7 @@ export async function GET(request: NextRequest) {
     const baseUrl = new URL(request.url).origin
 
     // Generate the text content that will use the font
-    const textContent = `${title || 'Writing'}${category || ''}${date || ''}@ybhrdwj`
+    const textContent = `${title || 'Writing'}${category || ''}${date || ''}@${basicInfo.username}`
 
     // Load the fonts with the exact text content we'll use
     const [interRegular, interSemiBold] = await Promise.all([
@@ -63,8 +64,8 @@ export async function GET(request: NextRequest) {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`${baseUrl}/logos/yb.jpg`}
-                  alt="Yash Bhardwaj"
+                  src={`${baseUrl}/logos/ag.jpg`}
+                  alt={basicInfo.name}
                   width={48}
                   height={48}
                   style={{
@@ -76,7 +77,7 @@ export async function GET(request: NextRequest) {
                   color: '#6b7280',
                   fontFamily: 'Inter',
                   fontWeight: 400,
-                }}>@ybhrdwj</span>
+                }}>@${basicInfo.username}</span>
               </div>
               <h1
                 style={{
@@ -154,8 +155,8 @@ export async function GET(request: NextRequest) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${baseUrl}/logos/yb.jpg`}
-                alt="Yash Bhardwaj"
+                src={`${baseUrl}/logos/ag.jpg`}
+                alt={basicInfo.name}
                 width={48}
                 height={48}
                 style={{
@@ -167,7 +168,7 @@ export async function GET(request: NextRequest) {
                 color: '#6b7280',
                 fontFamily: 'Inter',
                 fontWeight: 400,
-              }}>@ybhrdwj</span>
+              }}>@${basicInfo.username}</span>
             </div>
 
             {/* Arrow */}
