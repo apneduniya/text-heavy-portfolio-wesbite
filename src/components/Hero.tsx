@@ -28,7 +28,7 @@ export function Hero() {
           {/* Welcome paragraph - 75% width */}
           <div className="w-3/4">
             <p className="text-base text-gray-600">
-              Yo! I&apos;m Adarsh and this is my world (apneduniya). I think some crazy ideas and build them. Sometimes when I get bored, I write about them.
+              Yo! I&apos;m Adarsh and this is my world (apneduniya). I think some crazy ideas and build them. Sometimes when I get bored, I write some random stuffs.
             </p>
           </div>
 
