@@ -1,11 +1,16 @@
 import { Inter } from 'next/font/google'
 import { Header } from '@/components/Header'
-import { PostHogProvider } from '@/components/PostHogProvider'
 import './globals.css'
 import { Metadata, Viewport } from 'next'
-import { Analytics } from '@vercel/analytics/next'
+
 import basicInfo from '@/data/basic.json'
+
+import { PostHogProvider } from '@/components/PostHogProvider'
 import { ThemeProvider } from '@/components/ThemeProvider'
+
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -71,6 +76,7 @@ export default function RootLayout({
           </PostHogProvider>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
