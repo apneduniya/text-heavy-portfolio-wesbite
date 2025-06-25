@@ -31,16 +31,16 @@ const WEATHER_ICONS = {
 export function Weather() {
   const [weather, setWeather] = useState<WeatherData>({ 
     temp: '', 
-    location: 'Mumbai',
+    location: 'Kolkata',
     icon: '01d'
   })
 
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        // Mumbai coordinates
-        const lat = 19.0760
-        const lon = 72.8777
+        // Kolkata coordinates
+        const lat = 22.5726
+        const lon = 88.3639
         
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
@@ -54,7 +54,7 @@ export function Weather() {
         
         setWeather({
           temp: `${Math.round(data.main.temp)}°C`,
-          location: 'Mumbai',
+          location: 'Kolkata',
           icon: data.weather[0].icon
         })
       } catch (error) {
@@ -62,7 +62,7 @@ export function Weather() {
         // Fallback to default values on error
         setWeather({
           temp: '28°C',
-          location: 'Mumbai',
+          location: 'Kolkata',
           icon: '01d'
         })
       }

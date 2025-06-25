@@ -8,7 +8,7 @@ export function Clock() {
 
   useEffect(() => {
     const updateTime = () => {
-      // Force the time to Asia/Kolkata (Mumbai) regardless of user timezone
+      // Force the time to Asia/Kolkata regardless of user timezone
       const now = new Date(
         new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })
       )

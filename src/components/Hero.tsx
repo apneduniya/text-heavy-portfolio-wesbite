@@ -36,7 +36,7 @@ export function Hero() {
           {/* Image - 25% width */}
           <div className="w-1/4 aspect-square relative">
             <Image
-              src="/yb-hero.jpg"
+              src="/ag-hero.jpg"
               alt="Yash Bhardwaj"
               fill
               className="rounded-lg object-cover"
@@ -355,7 +355,7 @@ export function Hero() {
       {/* Desktop Image - 3 columns */}
       <div className="hidden md:block md:col-span-3">
         <Image
-          src="/yb-hero.jpg"
+          src="/ag-hero.jpg"
           alt="Yash Bhardwaj"
           width={400}
           height={400}
