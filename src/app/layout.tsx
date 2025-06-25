@@ -5,8 +5,9 @@ import './globals.css'
 import { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import basicInfo from '@/data/basic.json'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
@@ -59,12 +60,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} font-sans antialiased`}>
       <body className="text-gray-900">
-        <PostHogProvider>
-          <Header />
-          <main>
-            {children}
-          </main>
-        </PostHogProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme='light'
+          disableTransitionOnChange
+        >
+          <PostHogProvider>
+            <Header />
+            <main>{children}</main>
+          </PostHogProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
