@@ -56,7 +56,7 @@ export function Hero() {
                   variant="single-image-link"
                   text="Composio"
                   href="https://composio.dev/"
-                  images={{ src: "/logos/composio.jpg", alt: "Composio" }}
+                  images={{ src: "/logos/composio.png", alt: "Composio" }}
                   withBorder
                 />
               </li>
@@ -180,7 +180,7 @@ export function Hero() {
                 variant="single-image-link"
                 text="Composio"
                 href="https://composio.dev/"
-                images={{ src: "/logos/composio.jpg", alt: "Composio" }}
+                images={{ src: "/logos/composio.png", alt: "Composio" }}
                 withBorder
               />
             </li>
