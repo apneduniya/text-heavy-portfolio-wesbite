@@ -16,6 +16,8 @@ export function Hero() {
     setTimeout(() => setShowCopied(false), 2000)
   }
 
+  const currentAge = new Date().getFullYear() - new Date('2006-10-26').getFullYear();
+
   return (
     <div className="mx-auto w-full max-w-[1084px] px-4 py-8 md:grid md:grid-cols-12 md:gap-5 md:px-0 md:py-16">
       {/* One column gap at start - desktop only */}
@@ -86,7 +88,7 @@ export function Hero() {
                   ]}
                 />
               </li>
-              <li>18 years old, based in Kolkata</li>
+              <li>{currentAge} years old, based in Kolkata</li>
             </ul>
           </div>
 
@@ -210,7 +212,7 @@ export function Hero() {
                 ]}
               />
             </li>
-            <li>18 years old, based in Kolkata</li>
+            <li>{currentAge} years old, based in Kolkata</li>
           </ul>
         </div>
 
