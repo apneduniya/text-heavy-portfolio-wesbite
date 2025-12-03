@@ -3,13 +3,13 @@
   "projects": [
     {
       "logo": "/logos/avasara.png",
-      "name": "Avasara [Waitlist open]",
-      "url": "https://avasara.thatsmeadarsh.com/",
+      "name": "Avasara",
+      "url": "avasara.thatsmeadarsh.com/",
       "description": "Matches real-time opportunities to your skills using AI"
     },
     {
       "logo": "/logos/kula.png",
-      "name": "Kula [Building]",
+      "name": "Kula",
       "url": "github.com/apneduniya/kula",
       "description": "Futarchy x AI based world simulator"
     },

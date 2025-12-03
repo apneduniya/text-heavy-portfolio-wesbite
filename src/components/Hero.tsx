@@ -53,7 +53,19 @@ export function Hero() {
             <h2 className="text-sm font-medium uppercase text-gray-400">Summary</h2>
             <ul className="list-disc space-y-2 pl-4 text-gray-600 [&>li::marker]:text-gray-300">
               <li>
-                Currently I&apos;m taking care of users at{' '}
+                Currently I&apos;m working on my own projects {' '}
+                <LinkText
+                  variant="image-stack"
+                  text=""
+                  images={[
+                    { src: "/logos/avasara.png", alt: "Avasara" },
+                    { src: "/logos/kula.png", alt: "Kula" },
+                    { src: "/logos/prismia.png", alt: "Prismia" },
+                  ]}
+                />
+              </li>
+              <li>
+                Previously I was fixing bugs for{' '}
                 <LinkText
                   variant="single-image-link"
                   text="Composio"
@@ -61,9 +73,7 @@ export function Hero() {
                   images={{ src: "/logos/composio.png", alt: "Composio" }}
                   withBorder
                 />
-              </li>
-              <li>
-                Previously I was fixing the UI for{' '}
+                {' & '}
                 <LinkText
                   variant="single-image-link"
                   text="Xade Finance"
@@ -71,7 +81,6 @@ export function Hero() {
                   images={{ src: "/logos/xadefinance.jpg", alt: "Xade Finance" }}
                   withBorder
                 />
-                as an intern
               </li>
               <li>
                 I&apos;ve worked for 10+ companies since 2023
@@ -120,7 +129,7 @@ export function Hero() {
                   height={20}
                   className="[&>path]:fill-gray-100 hover:[&>path]:fill-gray-600"
                 />
-              </a> 
+              </a>
               <a
                 href={basicInfo.github}
                 target="_blank"
@@ -177,7 +186,19 @@ export function Hero() {
           <h2 className="text-sm font-medium uppercase text-gray-400">Summary</h2>
           <ul className="list-disc space-y-2 pl-4 text-gray-600 [&>li::marker]:text-gray-300">
             <li>
-              Currently I&apos;m taking care of users at{' '}
+              Currently I&apos;m working on my own projects {' '}
+              <LinkText
+                variant="image-stack"
+                text=""
+                images={[
+                  { src: "/logos/avasara.png", alt: "Avasara" },
+                  { src: "/logos/kula.png", alt: "Kula" },
+                  { src: "/logos/prismia.png", alt: "Prismia" },
+                ]}
+              />
+            </li>
+            <li>
+              Previously I was fixing bugs for{' '}
               <LinkText
                 variant="single-image-link"
                 text="Composio"
@@ -185,9 +206,7 @@ export function Hero() {
                 images={{ src: "/logos/composio.png", alt: "Composio" }}
                 withBorder
               />
-            </li>
-            <li>
-              Previously I was fixing the UI for{' '}
+              {' & '}
               <LinkText
                 variant="single-image-link"
                 text="Xade Finance"
@@ -195,7 +214,6 @@ export function Hero() {
                 images={{ src: "/logos/xadefinance.jpg", alt: "Xade Finance" }}
                 withBorder
               />
-              as an intern
             </li>
             <li>
               I&apos;ve worked for 10+ companies since 2023
