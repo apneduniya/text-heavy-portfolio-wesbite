@@ -38,13 +38,7 @@ export function Weather() {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        // Kolkata coordinates
-        const lat = 22.5726
-        const lon = 88.3639
-        
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
-        )
+        const response = await fetch('/api/weather')
 
         if (!response.ok) {
           throw new Error('Weather data fetch failed')
@@ -52,11 +46,7 @@ export function Weather() {
 
         const data = await response.json()
         
-        setWeather({
-          temp: `${Math.round(data.main.temp)}°C`,
-          location: 'Kolkata',
-          icon: data.weather[0].icon
-        })
+        setWeather(data)
       } catch (error) {
         console.error('Error fetching weather:', error)
         // Fallback to default values on error
@@ -86,4 +76,4 @@ export function Weather() {
       <span>{weather.temp}</span>
     </div>
   )
-} 
+}

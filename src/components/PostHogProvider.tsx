@@ -1,51 +1,54 @@
 "use client"
 
-import posthog from "posthog-js";
-import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST!,
-      // ui_host: 'https://us.posthog.com',
-      capture_pageview: false, // We capture pageviews manually
-      capture_pageleave: true, // Enable pageleave capture
-    });
-  }, []);
+let posthogPromise: Promise<(typeof import("posthog-js"))["default"]> | undefined
 
-  return (
-    <PHProvider client={posthog}>
-      <SuspendedPostHogPageView />
-      {children}
-    </PHProvider>
-  );
+function loadPostHog() {
+  if (!posthogPromise) {
+    posthogPromise = import("posthog-js").then(({ default: posthog }) => {
+      const key = process.env.NEXT_PUBLIC_POSTHOG_KEY
+      const host = process.env.NEXT_PUBLIC_POSTHOG_HOST
+
+      if (key && host) {
+        posthog.init(key, {
+          api_host: host,
+          capture_pageview: false,
+          capture_pageleave: true,
+        })
+      }
+
+      return posthog
+    })
+  }
+
+  return posthogPromise
 }
 
-function PostHogPageView() {
+export function PostHogPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const posthog = usePostHog();
 
   useEffect(() => {
-    if (pathname && posthog) {
-      let url = window.origin + pathname;
-      const search = searchParams.toString();
-      if (search) {
-        url += "?" + search;
-      }
-      posthog.capture("$pageview", { "$current_url": url });
+    if (!pathname) return
+
+    const capturePageView = () => {
+      void loadPostHog().then((posthog) => {
+        const search = searchParams.toString()
+        const url = `${window.origin}${pathname}${search ? `?${search}` : ""}`
+        posthog.capture("$pageview", { "$current_url": url })
+      })
     }
-  }, [pathname, searchParams, posthog]);
 
-  return null;
-}
+    if ("requestIdleCallback" in window) {
+      const callbackId = window.requestIdleCallback(capturePageView, { timeout: 2000 })
+      return () => window.cancelIdleCallback(callbackId)
+    }
 
-function SuspendedPostHogPageView() {
-  return (
-    <Suspense fallback={null}>
-      <PostHogPageView />
-    </Suspense>
-  );
+    const timeoutId = window.setTimeout(capturePageView, 1000)
+    return () => window.clearTimeout(timeoutId)
+  }, [pathname, searchParams])
+
+  return null
 }

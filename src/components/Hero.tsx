@@ -16,7 +16,12 @@ export function Hero() {
     setTimeout(() => setShowCopied(false), 2000)
   }
 
-  const currentAge = new Date().getFullYear() - new Date('2006-10-26').getFullYear();
+  const birthDate = new Date('2006-10-26')
+  const today = new Date()
+  const hasHadBirthdayThisYear =
+    today.getMonth() > birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate())
+  const currentAge = today.getFullYear() - birthDate.getFullYear() - (hasHadBirthdayThisYear ? 0 : 1)
 
   return (
     <div className="mx-auto w-full max-w-[1084px] px-4 py-8 md:grid md:grid-cols-12 md:gap-5 md:px-0 md:py-16">
@@ -37,11 +42,11 @@ export function Hero() {
           {/* Image - 25% width */}
           <div className="w-1/4 aspect-square relative">
             <Image
-              src="/ag-hero.jpg"
+              src="/ag-hero-square.webp"
               alt={basicInfo.name}
               fill
               className="rounded-lg object-cover"
-              priority
+              sizes="25vw"
             />
           </div>
         </div>
@@ -53,15 +58,13 @@ export function Hero() {
             <h2 className="text-sm font-medium uppercase text-gray-400">Summary</h2>
             <ul className="list-disc space-y-2 pl-4 text-gray-600 [&>li::marker]:text-gray-300">
               <li>
-                Currently I&apos;m working on my own projects {' '}
+                Currently I&apos;m working at{' '}
                 <LinkText
-                  variant="image-stack"
-                  text=""
-                  images={[
-                    { src: "/logos/avasara.png", alt: "Avasara" },
-                    { src: "/logos/kula.png", alt: "Kula" },
-                    { src: "/logos/prismia.png", alt: "Prismia" },
-                  ]}
+                  variant="single-image-link"
+                  text="Deckit"
+                  href="https://deckit.ai/"
+                  images={{ src: "/logos/deckit.svg", alt: "Deckit" }}
+                  withBorder
                 />
               </li>
               <li>
@@ -70,7 +73,7 @@ export function Hero() {
                   variant="single-image-link"
                   text="Composio"
                   href="https://composio.dev/"
-                  images={{ src: "/logos/composio.png", alt: "Composio" }}
+                  images={{ src: "/logos/composio.webp", alt: "Composio" }}
                   withBorder
                 />
                 {' & '}
@@ -78,7 +81,7 @@ export function Hero() {
                   variant="single-image-link"
                   text="Xade Finance"
                   href="https://x.com/xade_xyz"
-                  images={{ src: "/logos/xadefinance.jpg", alt: "Xade Finance" }}
+                  images={{ src: "/logos/xadefinance.webp", alt: "Xade Finance" }}
                   withBorder
                 />
               </li>
@@ -91,9 +94,9 @@ export function Hero() {
                   variant="image-stack"
                   text=""
                   images={[
-                    { src: "/logos/h4b.jpg", alt: "Hack4Bengal" },
-                    { src: "/logos/superteamin.jpg", alt: "Superteam" },
-                    { src: "/logos/takshila.jpeg", alt: "Takshila" },
+                    { src: "/logos/h4b.webp", alt: "Hack4Bengal" },
+                    { src: "/logos/superteamin.webp", alt: "Superteam" },
+                    { src: "/logos/takshila.webp", alt: "Takshila" },
                   ]}
                 />
               </li>
@@ -147,7 +150,7 @@ export function Hero() {
                 <div className="flex items-center gap-2 whitespace-nowrap overflow-hidden">
                   <div className="overflow-hidden rounded-full flex-shrink-0">
                     <Image
-                      src="/cd.png"
+                      src="/cd.webp"
                       alt="Album Art"
                       width={24}
                       height={24}
@@ -186,15 +189,13 @@ export function Hero() {
           <h2 className="text-sm font-medium uppercase text-gray-400">Summary</h2>
           <ul className="list-disc space-y-2 pl-4 text-gray-600 [&>li::marker]:text-gray-300">
             <li>
-              Currently I&apos;m working on my own projects {' '}
+              Currently I&apos;m working at{' '}
               <LinkText
-                variant="image-stack"
-                text=""
-                images={[
-                  { src: "/logos/avasara.png", alt: "Avasara" },
-                  { src: "/logos/kula.png", alt: "Kula" },
-                  { src: "/logos/prismia.png", alt: "Prismia" },
-                ]}
+                variant="single-image-link"
+                text="Deckit"
+                href="https://deckit.ai/"
+                images={{ src: "/logos/deckit.svg", alt: "Deckit" }}
+                withBorder
               />
             </li>
             <li>
@@ -203,7 +204,7 @@ export function Hero() {
                 variant="single-image-link"
                 text="Composio"
                 href="https://composio.dev/"
-                images={{ src: "/logos/composio.png", alt: "Composio" }}
+                images={{ src: "/logos/composio.webp", alt: "Composio" }}
                 withBorder
               />
               {' & '}
@@ -211,7 +212,7 @@ export function Hero() {
                 variant="single-image-link"
                 text="Xade Finance"
                 href="https://x.com/xade_xyz"
-                images={{ src: "/logos/xadefinance.jpg", alt: "Xade Finance" }}
+                images={{ src: "/logos/xadefinance.webp", alt: "Xade Finance" }}
                 withBorder
               />
             </li>
@@ -224,9 +225,9 @@ export function Hero() {
                 variant="image-stack"
                 text=""
                 images={[
-                  { src: "/logos/h4b.jpg", alt: "Hack4Bengal" },
-                  { src: "/logos/superteamin.jpg", alt: "Superteam" },
-                  { src: "/logos/takshila.jpeg", alt: "Takshila" },
+                  { src: "/logos/h4b.webp", alt: "Hack4Bengal" },
+                  { src: "/logos/superteamin.webp", alt: "Superteam" },
+                  { src: "/logos/takshila.webp", alt: "Takshila" },
                 ]}
               />
             </li>
@@ -281,7 +282,7 @@ export function Hero() {
             <div className="flex items-center gap-2 whitespace-nowrap overflow-hidden">
               <div className="overflow-hidden rounded-full flex-shrink-0">
                 <Image
-                  src="/cd.png"
+                  src="/cd.webp"
                   alt="Album Art"
                   width={24}
                   height={24}
@@ -304,12 +305,12 @@ export function Hero() {
       {/* Desktop Image - 3 columns */}
       <div className="hidden md:block md:col-span-3">
         <Image
-          src="/ag-hero.jpg"
+          src="/ag-hero-square.webp"
           alt={basicInfo.name}
           width={400}
           height={400}
           className="rounded-lg"
-          priority
+          sizes="250px"
         />
       </div>
 
@@ -317,4 +318,4 @@ export function Hero() {
       <div className="hidden md:block md:col-span-1" />
     </div>
   )
-} 
+}

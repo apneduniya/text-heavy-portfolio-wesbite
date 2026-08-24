@@ -24,7 +24,7 @@ export function LinkText({ variant, text, href, images, className = '', withBord
   const imageSize = 18
 
   const renderImage = (image: ImageProps) => (
-    <div className="flex h-[18px] items-center">
+    <span className="flex h-[18px] items-center">
       <Image
         src={image.src}
         alt={image.alt}
@@ -32,13 +32,13 @@ export function LinkText({ variant, text, href, images, className = '', withBord
         height={imageSize}
         className={`rounded-full object-contain ${withBorder ? 'border border-gray-300' : ''}`}
       />
-    </div>
+    </span>
   )
 
   switch (variant) {
     case 'single-image-link':
       return (
-        <div className={`inline-flex items-center ${className}`}>
+        <span className={`inline-flex items-center align-middle ${className}`}>
           {renderImage((images as ImageProps))}
           <a 
             href={href} 
@@ -58,18 +58,18 @@ export function LinkText({ variant, text, href, images, className = '', withBord
               <path d="M7 7h10v10" />
             </svg>
           </a>
-        </div>
+        </span>
       )
 
     case 'image-stack':
       return (
-        <div className={`inline-flex items-center ${className}`}>
-          <div className="flex -space-x-1.5">
+        <span className={`inline-flex items-center align-middle ${className}`}>
+          <span className="flex -space-x-1.5">
             {(images as ImageProps[]).map((image, index) => (
-              <div key={index} className="group relative flex h-[18px] items-center">
-                <div className="absolute bottom-full left-1/2 mb-1 hidden -translate-x-1/2 transform whitespace-nowrap rounded-full bg-gray-900 px-2 py-0.5 text-xs text-white group-hover:block">
+              <span key={index} className="group relative flex h-[18px] items-center">
+                <span className="absolute bottom-full left-1/2 mb-1 hidden -translate-x-1/2 transform whitespace-nowrap rounded-full bg-gray-900 px-2 py-0.5 text-xs text-white group-hover:block">
                   {image.alt}
-                </div>
+                </span>
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -77,19 +77,19 @@ export function LinkText({ variant, text, href, images, className = '', withBord
                   height={imageSize}
                   className="rounded-full object-contain ring-1 ring-white"
                 />
-              </div>
+              </span>
             ))}
-          </div>
+          </span>
           <span className="ml-1.5 leading-tight">{text}</span>
-        </div>
+        </span>
       )
 
     case 'single-image-text':
       return (
-        <div className={`inline-flex items-center ${className}`}>
+        <span className={`inline-flex items-center align-middle ${className}`}>
           {renderImage((images as ImageProps))}
           <span className="ml-1.5 leading-tight">{text}</span>
-        </div>
+        </span>
       )
 
     case 'text-link':

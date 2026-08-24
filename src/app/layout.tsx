@@ -2,11 +2,11 @@ import { Inter } from 'next/font/google'
 import { Header } from '@/components/Header'
 import './globals.css'
 import { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
 
 import basicInfo from '@/data/basic.json'
 
-import { PostHogProvider } from '@/components/PostHogProvider'
-import { ThemeProvider } from '@/components/ThemeProvider'
+import { PostHogPageView } from '@/components/PostHogProvider'
 
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     title: basicInfo.name,
     description: basicInfo.shortDescription,
     siteName: basicInfo.name,
-    images: [`${basicInfo.website}/og-image.png`],
+    images: [`${basicInfo.website}/og-image.jpg`],
   },
   twitter: {
     card: "summary_large_image",
     title: basicInfo.name,
     description: basicInfo.shortDescription,
-    images: [`${basicInfo.website}/og-image.png`],
+    images: [`${basicInfo.website}/og-image.jpg`],
     creator: `@${basicInfo.username}`,
   },
   robots: {
@@ -65,20 +65,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={`${inter.variable} font-sans antialiased`}
     >
       <body className="text-gray-900">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          disableTransitionOnChange
-        >
-          <PostHogProvider>
-            <Header />
-            <main>{children}</main>
-          </PostHogProvider>
-        </ThemeProvider>
+        <Suspense fallback={null}>
+          <PostHogPageView />
+        </Suspense>
+        <Header />
+        <main>{children}</main>
         <Analytics />
         <SpeedInsights />
       </body>
